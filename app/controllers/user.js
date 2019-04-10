@@ -4,15 +4,15 @@ var xss = require('xss')
 var mongoose =  require('mongoose')
 var User = mongoose.model('User')
 var uuid = require('uuid')
-// var userHelper = require('../dbhelper/userHelper')
-import userHelper from '../dbhelper/userHelper'
+var userHelper = require('../dbhelper/userHelper')
+// import userHelper from '../dbhelper/userHelper'
 
 /**
  * 注册新用户
  * @param {Function} next          [description]
  * @yield {[type]}   [description]
  */
-exports.signup = async (ctx, next) => {
+exports.signup = async (ctx, next) => {////
   console.log(ctx.request.body)
 
 	var phoneNumber = xss(ctx.request.body.phoneNumber)

@@ -2,6 +2,7 @@
 
 const Router = require('koa-router')
 const User = require('../app/controllers/user')
+const Product = require('../app/controllers/product')
 const App = require('../app/controllers/app')
 
 module.exports = function(){
@@ -18,6 +19,9 @@ module.exports = function(){
   router.get('/test/user/users',User.users)
   router.post('/test/user/add',User.addUser)
   router.post('/test/user/delete',User.deleteUser)
+
+//product
+  router.post('/p/products', App.hasBody, Product.products)
 
   return router
 }

@@ -5,6 +5,7 @@
 var mongoose = require('mongoose')
 var uuid = require('uuid')
 var User = mongoose.model('User')
+var Product = mongoose.model('Product')
 
 exports.hasBody = async (ctx, next) => {
   var body = ctx.request.body || {}

@@ -49,8 +49,21 @@ const Koa = require('koa')
 const logger = require('koa-logger')
 const session = require('koa-session')
 const bodyParser = require('koa-bodyparser')
+var cors = require('koa2-cors');
 const app = new Koa()
-
+app.use(cors({
+  origin: function(ctx) {
+    if (ctx.url === '/test') {
+      return false;
+    }
+    return '*';
+  },
+  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  maxAge: 5,
+  credentials: true,
+  allowMethods: ['GET', 'POST'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept']
+}));
 app.keys = ['Molly']
 
 app.use(logger())
